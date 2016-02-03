@@ -4,7 +4,7 @@ BASEDIR=`dirname $0`
 function get_dir(){
     if [ "$#" -lt 1 ]
     then
-        echo "Usage get_dir <dir>"
+        echo "Usage get_dir <dir-name>"
         echo ""
         exit 1
     else
@@ -15,3 +15,5 @@ function get_dir(){
 
 get_dir "author_strategy"
 get_dir "journal_strategy"
+get_dir "conference_strategy"
+#get_dir "fieldofstudy_strategy"
