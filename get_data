@@ -1,0 +1,17 @@
+#!/bin/bash
+BASEDIR=`dirname $0`
+
+function get_dir(){
+    if [ "$#" -lt 1 ]
+    then
+        echo "Usage get_dir <dir>"
+        echo ""
+        exit 1
+    else
+        local dir="$1"
+    fi
+    scp -r rosenthal@ifis:"/webapps/scholarly_citation_finder/scholarly_citation_finder/downloads/${dir}" data/
+}
+
+get_dir "author_strategy"
+get_dir "journal_strategy"
