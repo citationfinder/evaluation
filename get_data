@@ -10,10 +10,7 @@ function get_dir(){
     else
         local dir="$1"
     fi
-    scp -r rosenthal@ifis:"/webapps/scholarly_citation_finder/scholarly_citation_finder/downloads/${dir}" data/
+    scp -r rosenthal@ifis:"/webapps/scholarly_citation_finder/scholarly_citation_finder/downloads/${dir}/" .
 }
 
-get_dir "author_strategy"
-get_dir "journal_strategy"
-get_dir "conference_strategy"
-#get_dir "fieldofstudy_strategy"
+get_dir "citationfinder"
