@@ -1,11 +1,24 @@
-function plot_strategies(author_id, author_name, author_num_publications, author_num_citations)
-    strategies = {'author_strategy', 'journal_strategy', 'conference_strategy'};
+function plot_strategies(author_id, author_name, author_num_publications, author_num_citations, strategies)
+
+    if nargin >= 4 && nargin < 5
+        strategies = {'author', ...
+                      'journal', ...
+                      'conference', ...
+                      %'fieldofstudy', ...
+                      %'fieldofstudy-ordered'
+                      };
+    end
 
     figure
         hold on
         for i=1:length(strategies)
             try
-                data = csvread(['data/', strategies{i}, '/', author_id,'.csv']);
+                data = csvread(['citationfinder/', strategies{i}, '/', author_id,'.csv']);
+                %if mod(i, 2) == 0
+                %    linestyle = '.--';
+                %else
+                %    linestyle = '.-';
+                %end
                 plot(data(:,1), data(:,2), '.-')
             catch
                 plot(0, 0, '.-')
