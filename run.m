@@ -3,15 +3,19 @@ close all
 %%
 
 authors = {'332714384', 'sven groppe', '67', '307';
-           '110255', 'henry etzkowitz', '118', '';
-           '358326', 'peter fratzl', '418', '';
-           '63266', 'antonio p strafella', '46', ''};
+           '110255', 'henry etzkowitz', '118', '8715';
+           '358326', 'peter fratzl', '418', '10907';
+           '63266', 'antonio p strafella', '46', '1264'};
 
 %authors = {'332714384', 'sven groppe', '67', '307' }
 
 %% custom
-for i=1:size(authors, 1)
-    plot_strategies(authors{i,:}, {'author-ordered-minyear-recursive+journal-ordered-minyear', 'author-ordered-recursive+journal-ordered-minyear', 'journal', 'journal-ordered-minyear', 'author', 'author-ordered-recursive'})
+for i=[1]
+    plot_strategies(authors{i,:}, {'author-ordered-recursive+journal-ordered+conference-ordered', ...
+                                   'author-ordered-recursive+journal-ordered-minyear+conference-ordered-minyear', ...
+                                   'fieldofstudy-ordered-limit', ...
+                                   'fieldofstudy-ordered'})
+    %plot_strategies(authors{i,:}, {'author-ordered-minyear-recursive+journal-ordered-minyear', 'author-ordered-recursive+journal-ordered-minyear', 'journal', 'journal-ordered-minyear', 'author', 'author-ordered-recursive'})
 end
 
 
@@ -28,14 +32,14 @@ end
 
 
 %% authors
-for i=1:size(authors, 1)
-    plot_strategies(authors{i,:}, {'author', 'author-ordered-recursive', 'author-ordered'})
+for i=1:1
+    plot_strategies(authors{i,:}, {'author', 'author-ordered-recursive', 'author-ordered', 'author-ordered-minyear-recursive', 'author-ordered-minyear'})
 end
 
 
 %% conferences
-for i=1:size(authors, 1)
-    plot_strategies(authors{i,:}, {'conference', 'conference-ordered'})
+for i=1:1
+    plot_strategies(authors{i,:}, {'conference', 'conference-ordered', 'conference-ordered-minyear'})
 end
 
 
