@@ -1,3 +1,4 @@
+clc
 close all
 %%
 
@@ -7,6 +8,12 @@ authors = {'332714384', 'sven groppe', '67', '307';
            '63266', 'antonio p strafella', '46', ''};
 
 %authors = {'332714384', 'sven groppe', '67', '307' }
+
+%% custom
+for i=1:size(authors, 1)
+    plot_strategies(authors{i,:}, {'author-ordered-minyear-recursive+journal-ordered-minyear', 'author-ordered-recursive+journal-ordered-minyear', 'journal', 'journal-ordered-minyear', 'author', 'author-ordered-recursive'})
+end
+
 
 %% all
 for i=1:size(authors, 1)
@@ -33,7 +40,7 @@ end
 
 
 %% fied of study
-for i=1:size(authors, 1)
-    plot_strategies(authors{i,:}, {'fieldofstudy', 'fieldofstudy-ordered'})
+for i=1:1
+    plot_strategies(authors{i,:}, {'fieldofstudy', 'fieldofstudy-ordered', 'fieldofstudy-ordered-limit'})
 end
 
