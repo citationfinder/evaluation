@@ -6,7 +6,8 @@ function plot_strategies(author_id, author_name, author_num_publications, author
         strategies = {'author', ...
                       'journal', ...
                       'conference', ...
-                      'fieldofstudy-ordered', ...
+                      'fieldofstudy-ordered-limit', ...
+                      'author-ordered-minyear-recursive+journal-ordered-minyear+conference-ordered-minyear+fieldofstudy-ordered-limit', ...
                       };
     end
 
@@ -27,7 +28,8 @@ function plot_strategies(author_id, author_name, author_num_publications, author
         end
         hold off
         grid on
-        title(['Strategies comparison for user ', author_name, ' (', author_id, ')'])
+        %title(['Strategies comparison for user ', author_name, ' (', author_id, ')'])
+        title(['Strategies comparison for user ', author_id])
         xlabel('inspected publications')
         ylabel('citations')
         legend(strategies, 'Location', 'southeast')
