@@ -13,4 +13,4 @@ function get_dir(){
     scp -r rosenthal@ifis:"/webapps/scholarly_citation_finder/scholarly_citation_finder/downloads/${dir}/" .
 }
 
-get_dir "citationfinder"
+get_dir "evaluation"
