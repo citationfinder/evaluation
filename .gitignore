@@ -1,2 +1,8 @@
 /citationfinder/
 /evaluation/
+
+#############
+## Matlab
+#############
+
+*.m~
