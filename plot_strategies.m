@@ -1,10 +1,10 @@
-function result = plot_strategies(evaluation_dir, author_id, author_num_citations, strategies)
+function plot_strategies(evaluation_dir, author_id, author_num_citations, strategies)
 
     if nargin < 4
         error('Not enough input arguments.')
     end
     
-    result = zeros(length(strategies), 2);
+    %result = zeros(length(strategies), 2);
 
     figure
         hold on
@@ -17,7 +17,7 @@ function result = plot_strategies(evaluation_dir, author_id, author_num_citation
                 %catch
                 %    plot(0, 0, '.-')
                 %end
-                result(i,:) = [data(end,1), data(end,2)];
+                %result(i,:) = [data(end,1), data(end,2)];
             else
                 if display_figure
                     plot(0, 0, '.-')

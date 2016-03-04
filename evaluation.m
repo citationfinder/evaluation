@@ -22,10 +22,11 @@ function evaluation(name, strategies, display_figure)
         authors_num_publications = C{2};    
 
         for i = 1:length(authors_ids)
-            result = result + plot_strategies(evaluation_dir, authors_ids(i), authors_num_citations(i), strategies);
+            plot_strategies(evaluation_dir, authors_ids(i), authors_num_citations(i), strategies);
         end
     else
         
+        fprintf('%s\t%s\t%s\n','effectiveness', 'efficiency', 'strategy')
         for i = 1:length(strategies)
             filename = fullfile(evaluation_dir, strcat('meta_', strategies{i}, '.csv'));
             C = readLog(filename, '%u32 %f %f %f %f', 1);
@@ -36,19 +37,58 @@ function evaluation(name, strategies, display_figure)
             num_inspected_publications = C{4};
             num_citations = C{5};
             
-            nc_ac = num_citations./author_num_citations;
-            nc_np = num_citations./num_inspected_publications;
-            figure
+            % remove zeros
+            idx = find(author_num_citations==0);
+            %warning('Ignore %f', idx)
+            author_num_citations(idx) = [];
+            num_inspected_publications(idx) = [];
+            num_citations(idx) = [];
+            
+            effectiveness = num_citations./author_num_citations;
+            %effectiveness(isnan(effectiveness)) = 0;
+            efficiency = num_citations./num_inspected_publications;
+            %efficiency(isnan(efficiency)) = 0;
+
+            effectiveness_mean = nanmean(effectiveness);
+            efficiency_mean = nanmean(efficiency);
+
+            fprintf('%f\t%f\t%s\n', effectiveness_mean, efficiency_mean, strategies{i})
+            
+            figure(2+i)
                 hold on
                 x_axis = 1:1:length(author_num_citations);
-                [ax,p1,p2] = plotyy(x_axis, nc_ac, x_axis, nc_np, 'semilogy','plot');
+                [ax, h1, h2] = plotyy(x_axis, effectiveness, x_axis, efficiency, 'semilogy','plot');
+                %h1.LineStyle = ':';
+                %h2.LineStyle = ':';
                 hold off
                 grid on
-                legend('nc/ac', 'nc_np * 100')
+                legend('nc/ac', 'nc/np')
                 title(strategies{i})
-                xlabel(ax(1),'Mesurement')
-                ylabel(ax(1),'#Citations / #Total Citations')
-                ylabel(ax(2),'#Citations / #Inspected Publications')
+                xlabel(ax(1),'Measurement')
+                ylabel(ax(1),'Effectiveness #Citations / #Total Citations')
+                ylabel(ax(2),'Efficiency #Citations / #Inspected Publications')
+                
+            figure(1)
+                hold on
+                plot(x_axis, effectiveness)
+                %plot(get(gca,'xlim'), [effectiveness_mean effectiveness_mean])
+                hold off
+            figure(2)
+                hold on
+                plot(x_axis, efficiency)
+                %plot(get(gca,'xlim'), [efficiency_mean efficiency_mean])
+                hold off
+                
         end
+        
+        
+        figure(1)
+            grid on
+            legend(strategies)
+            title('effectiveness')
+        figure(2)
+            grid on
+            legend(strategies)
+            title('efficiency')
     end
 end
