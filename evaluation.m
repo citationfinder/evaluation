@@ -6,7 +6,7 @@ function evaluation(name, strategies, display_figure)
          display_figure = true;
     end
     
-    evaluation_dir = fullfile('evaluation', name);
+    evaluation_dir = fullfile('evaluation_data', name);
     if ~isdir(evaluation_dir)
        error('Evaluation files does not exists')
     end
