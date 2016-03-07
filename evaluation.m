@@ -57,9 +57,11 @@ function evaluation(name, strategies, display_figure)
 
             fprintf('%f\t%f\t%s\n', effectiveness_mean, efficiency_mean, strategies{i})
             
+            x_axis = 1:1:length(author_num_citations);
+            %{
             figure(2+i)
                 hold on
-                x_axis = 1:1:length(author_num_citations);
+                
                 [ax, h1, h2] = plotyy(x_axis, effectiveness, x_axis, efficiency, 'semilogy','plot');
                 %h1.LineStyle = ':';
                 %h2.LineStyle = ':';
@@ -70,7 +72,7 @@ function evaluation(name, strategies, display_figure)
                 xlabel(ax(1),'Measurement')
                 ylabel(ax(1),'Effectiveness #Citations / #Total Citations')
                 ylabel(ax(2),'Efficiency #Citations / #Inspected Publications')
-                
+            %}
             figure(1)
                 hold on
                 plot(x_axis, effectiveness)
@@ -89,9 +91,13 @@ function evaluation(name, strategies, display_figure)
             grid on
             legend(strategies)
             title('effectiveness')
+            xlabel('Measurement')
+            ylabel('Effectiveness')
         figure(2)
             grid on
             legend(strategies)
             title('efficiency')
+            xlabel('Measurement')
+            ylabel('efficiency')
     end
 end

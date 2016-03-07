@@ -9,8 +9,6 @@ function plot_strategies(evaluation_dir, author_id, strategies, author_num_publi
         author_num_citations = '';
     end
     
-    %result = zeros(length(strategies), 2);
-
     figure
         hold on
         for i=1:length(strategies)
@@ -22,12 +20,8 @@ function plot_strategies(evaluation_dir, author_id, strategies, author_num_publi
                 %catch
                 %    plot(0, 0, '.-')
                 %end
-                %result(i,:) = [data(end,1), data(end,2)];
             else
-                if display_figure
-                    plot(0, 0, '.-')
-                end
-                %result(i,:) = [0, 0];
+                plot(0, 0, '.-')
                 %warning('File does not exists: %s', filename)
             end
         end
