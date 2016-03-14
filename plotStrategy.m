@@ -1,4 +1,10 @@
-function plotStrategy(strategy_name, author_num_citations, num_inspected_publications, num_citations)
+function [effectiveness_mean, efficiency_mean] = plotStrategy(strategy_name, author_num_citations, num_inspected_publications, num_citations, plot)
+
+    if nargin < 4
+        error('Not enough input arguments.')
+    elseif nargin < 5
+        plot = false;
+    end
 
             % remove zeros
             idx = find(author_num_citations==0);
@@ -17,6 +23,7 @@ function plotStrategy(strategy_name, author_num_citations, num_inspected_publica
 
             fprintf('%f\t%f\t%s\n', effectiveness_mean, efficiency_mean, strategy_name)
             
+    if plot
             x_axis = 1:1:length(author_num_citations);
             %{
             figure(2+i)
@@ -43,7 +50,7 @@ function plotStrategy(strategy_name, author_num_citations, num_inspected_publica
                 plot(x_axis, efficiency)
                 %plot(get(gca,'xlim'), [efficiency_mean efficiency_mean])
                 hold off
-
+    end
 
 end
 
