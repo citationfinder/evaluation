@@ -1,12 +1,16 @@
-function plot_strategies(evaluation_dir, author_id, strategies, author_num_publications, author_num_citations)
+function plot_strategies(evaluation_dir, author_id, strategies, author_num_publications, author_num_citations, strategies_legend)
 
     if nargin < 3
         error('Not enough input arguments.')
-    elseif nargin < 4
+    end
+    if nargin < 4
         author_num_publications = '';
+    end
+    if nargin < 5
         author_num_citations = '';
-    elseif nargin < 5
-        author_num_citations = '';
+    end
+    if nargin < 6
+        strategies_legend = strategies;
     end
     
     figure
@@ -27,9 +31,9 @@ function plot_strategies(evaluation_dir, author_id, strategies, author_num_publi
         end
         hold off
         grid on
-        title(sprintf('Strategies for user %s (pubs=%i, cit=%i)', author_id, author_num_publications, author_num_citations))
-        xlabel('inspected publications')
-        ylabel('citations')
-        legend(strategies, 'Location', 'southeast')
+        title(sprintf('Autor %s (Publikationen: %i, Zitate: %i)', author_id, author_num_publications, author_num_citations))
+        xlabel('Untersuchte Publikationen')
+        ylabel('Gefundene Zitate')
+        legend(strategies_legend, 'Location', 'southeast')
        
 end

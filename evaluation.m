@@ -13,18 +13,7 @@ function evaluation(name, strategies, display_figure)
     
  
     if display_figure
-        % '1': row offset to skip header liner; '%u32 %u16 %u16'
-        C = readLog(fullfile(evaluation_dir, 'authors.csv'), '%s %f %f', 1);
-        authors_ids = C{1};
-        authors_num_citations = C{2};
-        authors_num_publications = C{3};
-        
-        fprintf('num_publications, mean=%f, min=%f, max=%f\n', mean(authors_num_publications), min(authors_num_publications), max(authors_num_publications))
-        fprintf('num_citations, mean=%f, min=%f, max=%f\n', mean(authors_num_citations), min(authors_num_citations), max(authors_num_citations))
-
-        for i = 1:length(authors_ids)
-            plotStrategiesForAuthor(evaluation_dir, authors_ids{i}, strategies, authors_num_publications(i), authors_num_citations(i));
-        end
+        % moved
     else
         
         fprintf('%s\t%s\t%s\n','effectiveness', 'efficiency', 'strategy')

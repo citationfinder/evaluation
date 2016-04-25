@@ -1,6 +1,6 @@
-/citationfinder/
-/evaluation/
-run.m
+/thesis
+/evaluation_data/
+run*.m
 
 #############
 ## Matlab
