@@ -1,4 +1,4 @@
-function evaluationStrategy(name, strategies, do_plot, strategies_legend)
+function evaluationStrategy(evaluation_name, strategies, do_plot, strategies_legend)
 
     if nargin < 2
         error('Not enough input arguments.')
@@ -9,10 +9,7 @@ function evaluationStrategy(name, strategies, do_plot, strategies_legend)
         strategies_legend = strategies;
     end
     
-    evaluation_dir = fullfile('evaluation_data', name);
-    if ~isdir(evaluation_dir)
-       error('Evaluation files does not exists')
-    end
+    evaluation_dir = getEvaluationDir(evaluation_name);
     
 
     fprintf('%s\t%s\t%s\n','effectiveness', 'efficiency', 'strategy')
