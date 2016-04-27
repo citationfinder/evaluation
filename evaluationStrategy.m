@@ -29,12 +29,14 @@ function evaluationStrategy(evaluation_name, strategies, do_plot, strategies_leg
             %title('effectiveness')
             xlabel('Messung')
             ylabel('Effektivität')
+            %axis([0,50,0,1])
         figure(2)
             grid on
             legend(strategies_legend)
             %title('efficiency')
             xlabel('Messung')
             ylabel('Effizienz')
+            %axis([0,50,0,0.18])
     end
 
 end
