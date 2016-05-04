@@ -12,7 +12,7 @@ function evaluationStrategy(evaluation_name, strategies, do_plot, strategies_leg
     evaluation_dir = getEvaluationDir(evaluation_name);
     
 
-    fprintf('%s\t%s\t%s\n','effectiveness', 'efficiency', 'strategy')
+    fprintf('%s\t%s\t%s\t%s\n','effectiveness', 'efficiency', 'publications', 'strategy')
     for i = 1:length(strategies)
         filename = fullfile(evaluation_dir, strcat('meta_', strategies{i}, '.csv'));
         

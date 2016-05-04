@@ -8,7 +8,6 @@ function [effectiveness_mean, efficiency_mean] = plotStrategy(strategy_name, aut
 
     % remove zeros
     idx = find(author_num_citations==0);
-    %warning('Ignore %f', idx)
     author_num_citations(idx) = [];
     num_inspected_publications(idx) = [];
     num_citations(idx) = [];
@@ -20,8 +19,9 @@ function [effectiveness_mean, efficiency_mean] = plotStrategy(strategy_name, aut
 
     effectiveness_mean = nanmean(effectiveness);
     efficiency_mean = nanmean(efficiency);
+    inspected_publications_mean = nanmean(num_inspected_publications);
 
-    fprintf('%f\t%f\t%s\n', effectiveness_mean, efficiency_mean, strategy_name)
+    fprintf('%f\t%f\t%.2f\t%s\n', effectiveness_mean, efficiency_mean, inspected_publications_mean, strategy_name)
             
     if do_plot
         x_axis = 1:length(author_num_citations);
