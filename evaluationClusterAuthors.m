@@ -12,9 +12,10 @@ function evaluationClusterAuthors(name, strategies)
     % init
     effectiveness = zeros(length(strategies), 7);
     efficiency = effectiveness;
+    inspected_publications = effectiveness;
 
     % legend
-    fprintf('%s\t%s\t%s\n','effectiveness', 'efficiency', 'strategy')
+    fprintf('%s\t%s\t%s\t%s\n','effectiveness', 'efficiency', 'publications', 'strategy')
             
     for i = 1:length(strategies)
         filename = fullfile(evaluation_dir, strcat('meta_', strategies{i}, '.csv'));
@@ -62,23 +63,23 @@ function evaluationClusterAuthors(name, strategies)
 
         %fprintf('citations no:%i\tfew:%i\tmedium:%i\tmany:%i\n', length(authors_citation_no),length(authors_citation_few), length(authors_citation_medium), length(authors_citation_many))
 
-        [effectiveness(i, 1), efficiency(i, 1)] = plotStrategy(strategies{i}, authors_num_citations, num_inspected_publications, num_citations);
+        [effectiveness(i, 1), efficiency(i, 1), inspected_publications(i, 1)] = plotStrategy(strategies{i}, authors_num_citations, num_inspected_publications, num_citations);
         idx = authors_citation_few;
-        [effectiveness(i, 2), efficiency(i, 2)] = plotStrategy(strcat(strategies{i}, '_citation_few (', int2str(length(authors_citation_few)),')'), authors_num_citations(idx), num_inspected_publications(idx), num_citations(idx));
+        [effectiveness(i, 2), efficiency(i, 2), inspected_publications(i, 2)] = plotStrategy(strcat(strategies{i}, '_citation_few (', int2str(length(authors_citation_few)),')'), authors_num_citations(idx), num_inspected_publications(idx), num_citations(idx));
         idx = authors_citation_medium;
-        [effectiveness(i, 3), efficiency(i, 3)] = plotStrategy(strcat(strategies{i}, '_citation_medium (', int2str(length(authors_citation_medium)),')'), authors_num_citations(idx), num_inspected_publications(idx), num_citations(idx));
+        [effectiveness(i, 3), efficiency(i, 3), inspected_publications(i, 3)] = plotStrategy(strcat(strategies{i}, '_citation_medium (', int2str(length(authors_citation_medium)),')'), authors_num_citations(idx), num_inspected_publications(idx), num_citations(idx));
         idx = authors_citation_many;
-        [effectiveness(i, 4), efficiency(i, 4)] = plotStrategy(strcat(strategies{i}, '_citation_many (', int2str(length(authors_citation_many)),')'), authors_num_citations(idx), num_inspected_publications(idx), num_citations(idx));
+        [effectiveness(i, 4), efficiency(i, 4), inspected_publications(i, 4)] = plotStrategy(strcat(strategies{i}, '_citation_many (', int2str(length(authors_citation_many)),')'), authors_num_citations(idx), num_inspected_publications(idx), num_citations(idx));
 
         %fprintf('publications few:%i\tmedium:%i\tmany:%i\n', length(authors_publication_few),length(authors_publication_medium), length(authors_publication_many))
         %fprintf('%s\t%s\t%s\n','effectiveness', 'efficiency', 'strategy')
         
         idx = authors_publication_few;
-        [effectiveness(i, 5), efficiency(i, 5)] = plotStrategy(strcat(strategies{i}, '_publication_few (', int2str(length(authors_publication_few)),')'), authors_num_citations(idx), num_inspected_publications(idx), num_citations(idx));
+        [effectiveness(i, 5), efficiency(i, 5), inspected_publications(i, 5)] = plotStrategy(strcat(strategies{i}, '_publication_few (', int2str(length(authors_publication_few)),')'), authors_num_citations(idx), num_inspected_publications(idx), num_citations(idx));
         idx = authors_publication_medium;
-        [effectiveness(i, 6), efficiency(i, 6)] = plotStrategy(strcat(strategies{i}, '_publication_medium (', int2str(length(authors_publication_medium)),')'), authors_num_citations(idx), num_inspected_publications(idx), num_citations(idx));
+        [effectiveness(i, 6), efficiency(i, 6), inspected_publications(i, 6)] = plotStrategy(strcat(strategies{i}, '_publication_medium (', int2str(length(authors_publication_medium)),')'), authors_num_citations(idx), num_inspected_publications(idx), num_citations(idx));
         idx = authors_publication_many;
-        [effectiveness(i, 7), efficiency(i, 7)] = plotStrategy(strcat(strategies{i}, '_publication_many (', int2str(length(authors_publication_many)),')'), authors_num_citations(idx), num_inspected_publications(idx), num_citations(idx));
+        [effectiveness(i, 7), efficiency(i, 7), inspected_publications(i, 7)] = plotStrategy(strcat(strategies{i}, '_publication_many (', int2str(length(authors_publication_many)),')'), authors_num_citations(idx), num_inspected_publications(idx), num_citations(idx));
         
     end
 
@@ -103,10 +104,21 @@ function evaluationClusterAuthors(name, strategies)
         legend(legend_labels, 'Location', 'northwest')
 
     figure
-        bar(efficiency)
+        b = bar(efficiency);
+        b(1).LineWidth = 2;
+        b(1).EdgeColor = 'red';
         grid on
         set(gca,'xticklabel', xaxis_labels)
         ylabel('Effizienz')
+        legend(legend_labels, 'Location', 'northeast')
+
+    figure
+        b = bar(inspected_publications);
+        b(1).LineWidth = 2;
+        b(1).EdgeColor = 'red';
+        grid on
+        set(gca,'xticklabel', xaxis_labels)
+        ylabel('Anzahl untersuchte Publikationen')
         legend(legend_labels, 'Location', 'northwest')
 
 end

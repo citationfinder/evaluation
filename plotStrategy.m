@@ -1,4 +1,4 @@
-function [effectiveness_mean, efficiency_mean] = plotStrategy(strategy_name, author_num_citations, num_inspected_publications, num_citations, do_plot)
+function [effectiveness_mean, efficiency_mean, inspected_publications_mean] = plotStrategy(strategy_name, author_num_citations, num_inspected_publications, num_citations, do_plot)
 
     if nargin < 4
         error('Not enough input arguments.')
@@ -25,21 +25,7 @@ function [effectiveness_mean, efficiency_mean] = plotStrategy(strategy_name, aut
             
     if do_plot
         x_axis = 1:length(author_num_citations);
-        %{
-        figure(2+i)
-                hold on
-                
-                [ax, h1, h2] = plotyy(x_axis, effectiveness, x_axis, efficiency, 'semilogy','plot');
-                %h1.LineStyle = ':';
-                %h2.LineStyle = ':';
-                hold off
-                grid on
-                legend('nc/ac', 'nc/np')
-                title(strategies{i})
-                xlabel(ax(1),'Measurement')
-                ylabel(ax(1),'Effectiveness #Citations / #Total Citations')
-                ylabel(ax(2),'Efficiency #Citations / #Inspected Publications')
-        %}
+
         figure(1)
             hold on
             plot(x_axis, effectiveness)
