@@ -1,4 +1,4 @@
-function [ C ] = readLog( fileName, format, numHeaderLines, delimiter )
+function [C] = readLog(fileName, format, numHeaderLines, delimiter)
 % readLog - Reads a file log
 %
 %   Example:   readLog('example.txt', '%s %d')
@@ -8,6 +8,7 @@ function [ C ] = readLog( fileName, format, numHeaderLines, delimiter )
 %   format: format of the content of the file
 %   [numHeaderLines]: number of header lines
 %   [delimiter]: Delimiter e.g. ' ' (space), '\t' (tab) or ',' (comma)
+%
 %   return: maxtrix with log data
 %
 

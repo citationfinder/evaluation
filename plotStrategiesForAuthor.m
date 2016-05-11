@@ -1,4 +1,16 @@
-function plot_strategies(evaluation_dir, author_id, strategies, author_num_publications, author_num_citations, strategies_legend)
+function plotStrategiesForAuthor(evaluation_name, author_id, strategies, author_num_publications, author_num_citations, strategies_legend)
+% plotStrategiesForAuthor - Create plot for authors.
+%
+%   Example:   plotStrategiesForAuthor('my-evaluation', '15616', {'my-strategy'}, 10, 17, {'My Strategy'})
+%
+%   evaluation_name: Name of the evaluation
+%   author_id: ID of the author
+%   strategies: Cell list of strategies
+%   (author_num_publications): Optional number of publications this author
+%       has
+%   (author_num_citations): Optional number of citations this author has
+%   (strategies_legend): Optional legend lables for the given strategies
+%
 
     if nargin < 3
         error('Not enough input arguments.')
@@ -12,6 +24,8 @@ function plot_strategies(evaluation_dir, author_id, strategies, author_num_publi
     if nargin < 6
         strategies_legend = strategies;
     end
+    
+    evaluation_dir = getEvaluationDir(evaluation_name);
     
     figure
         hold on

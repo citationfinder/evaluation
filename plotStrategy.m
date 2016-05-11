@@ -1,4 +1,19 @@
 function [effectiveness_mean, efficiency_mean, inspected_publications_mean] = plotStrategy(strategy_name, author_num_citations, num_inspected_publications, num_citations, do_plot)
+% plotStrategy - Compute effectiveness and efficiency of the given
+% strategies.
+%
+%   Example:   plotStrategy('my-strategy', [5,2], [10,5], [7, 2], true)
+%
+%   strategy_name: Name of a strategy
+%   author_num_citations: Authors number of citations
+%   num_inspected_publications: Number of inspected publications
+%   num_citations: Number of citations
+%   (do_plot): Optional set to true, if a plot should be created
+%
+%   effectiveness_mean: Mean effectiveness
+%   efficiency_mean: Mean efficiency
+%   inspected_publications_mean: Mean number of inspected publications
+%
 
     if nargin < 4
         error('Not enough input arguments.')
