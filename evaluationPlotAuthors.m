@@ -1,4 +1,14 @@
 function evaluationPlotAuthors(evaluation_name, strategies, strategies_legend, specific_author_ids)
+% evaluationPlotAuthors - Create plot for authors.
+%
+%   Example:   evaluationPlotAuthors('my-evaluation', {'my-strategy'}, {'My Strategy'})
+%
+%   evaluation_name: Name of the evaluation
+%   strategies: Cell list of strategies
+%   (strategies_legend): Optional legend lables for the given strategies
+%   (specific_author_ids): Optional list of specific author IDs. Only for
+%   these authors plots get created.
+%
 
     if nargin < 2
         error('Not enough input arguments.')

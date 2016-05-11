@@ -1,4 +1,14 @@
 function evaluationStrategy(evaluation_name, strategies, do_plot, strategies_legend)
+% evaluationStrategy - Plot effectiveness and efficiency for the given
+% strategies.
+%
+%   Example:   evaluationStrategy('my-evaluation', {'my-strategy'}, true, {'My Strategy'})
+%
+%   evaluation_name: Name of the evaluation
+%   strategies: Cell list of strategies
+%   (do_plot): Optional set to true, if a plot should be created
+%   (strategies_legend): Optional legend lables for the given strategies
+%
 
     if nargin < 2
         error('Not enough input arguments.')

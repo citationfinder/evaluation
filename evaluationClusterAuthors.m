@@ -1,13 +1,19 @@
-function evaluationClusterAuthors(name, strategies)
+function evaluationClusterAuthors(evaluation_name, strategies)
+% evaluationClusterAuthors - Create 3 bar plots for given strategies
+% grouped by author classes: the effectiveness, efficiency and the
+% number of inspected publication.
+%
+%   Example:   evaluationClusterAuthors('my-evaluation', {'my-strategy'})
+%
+%   evaluation_name: Name of the evaluation
+%   strategies: Cell list of strategies
+%
 
     if nargin < 2
         error('Not enough input arguments.')
     end
 
-    evaluation_dir = fullfile('evaluation_data', name, filesep);
-    if ~isdir(evaluation_dir)
-       error('Evaluation files does not exists')
-    end    
+    evaluation_dir = getEvaluationDir(evaluation_name);
     
     % init
     effectiveness = zeros(length(strategies), 7);
@@ -61,8 +67,6 @@ function evaluationClusterAuthors(name, strategies)
             end
         end
 
-        %fprintf('citations no:%i\tfew:%i\tmedium:%i\tmany:%i\n', length(authors_citation_no),length(authors_citation_few), length(authors_citation_medium), length(authors_citation_many))
-
         [effectiveness(i, 1), efficiency(i, 1), inspected_publications(i, 1)] = plotStrategy(strategies{i}, authors_num_citations, num_inspected_publications, num_citations);
         idx = authors_citation_few;
         [effectiveness(i, 2), efficiency(i, 2), inspected_publications(i, 2)] = plotStrategy(strcat(strategies{i}, '_citation_few (', int2str(length(authors_citation_few)),')'), authors_num_citations(idx), num_inspected_publications(idx), num_citations(idx));
@@ -71,9 +75,6 @@ function evaluationClusterAuthors(name, strategies)
         idx = authors_citation_many;
         [effectiveness(i, 4), efficiency(i, 4), inspected_publications(i, 4)] = plotStrategy(strcat(strategies{i}, '_citation_many (', int2str(length(authors_citation_many)),')'), authors_num_citations(idx), num_inspected_publications(idx), num_citations(idx));
 
-        %fprintf('publications few:%i\tmedium:%i\tmany:%i\n', length(authors_publication_few),length(authors_publication_medium), length(authors_publication_many))
-        %fprintf('%s\t%s\t%s\n','effectiveness', 'efficiency', 'strategy')
-        
         idx = authors_publication_few;
         [effectiveness(i, 5), efficiency(i, 5), inspected_publications(i, 5)] = plotStrategy(strcat(strategies{i}, '_publication_few (', int2str(length(authors_publication_few)),')'), authors_num_citations(idx), num_inspected_publications(idx), num_citations(idx));
         idx = authors_publication_medium;
@@ -90,7 +91,7 @@ function evaluationClusterAuthors(name, strategies)
                      'Autoren: wenige Publikationen', ...
                      'Autoren: mehrere Publikationen', ...
                      'Autoren: viele Publikationen'};
-    %xaxis_labels = strategies;
+
     xaxis_labels = {'Autor-Strategie', ...
                     'Fachzeitschrift-Strategie', ...
                     'Kombintation aller Strategien'};
