@@ -34,6 +34,6 @@ function evaluationPlotAuthors(evaluation_name, strategies, strategies_legend, s
         %if exist('specific_author_ids', 'var') && ~any(specific_author_ids==str2double(authors_ids{i}))
         %    continue
         %end
-        plotStrategiesForAuthor(evaluation_dir, authors_ids{i}, strategies, authors_num_publications(i), authors_num_citations(i), strategies_legend);
+        plotStrategiesForAuthor(evaluation_name, authors_ids{i}, strategies, authors_num_publications(i), authors_num_citations(i), strategies_legend);
     end
 end
