@@ -45,9 +45,9 @@ function plotStrategiesForAuthor(evaluation_name, author_id, strategies, author_
         end
         hold off
         grid on
-        title(sprintf('Autor %s (Publikationen: %i, Zitate: %i)', author_id, author_num_publications, author_num_citations))
-        xlabel('Untersuchte Publikationen')
-        ylabel('Gefundene Zitate')
+        title(sprintf('Author %s (publications: %i, citations: %i)', author_id, author_num_publications, author_num_citations))
+        xlabel('Publications examined')
+        ylabel('Citations found')
         legend(strategies_legend, 'Location', 'southeast')
        
 end

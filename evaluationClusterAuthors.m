@@ -84,24 +84,24 @@ function evaluationClusterAuthors(evaluation_name, strategies)
         
     end
 
-    legend_labels = {'Autoren: alle', ...
-                     'Autoren: wenige Zitate', ...
-                     'Autoren: mehrere Zitate', ...
-                     'Autoren: viele Zitate', ...
-                     'Autoren: wenige Publikationen', ...
-                     'Autoren: mehrere Publikationen', ...
-                     'Autoren: viele Publikationen'};
+    legend_labels = {'Authors: all', ...
+                     'Authors: few citations', ...
+                     'Authors: several citations', ...
+                     'Authors: many citations', ...
+                     'Authors: few publications', ...
+                     'Authors: several publications', ...
+                     'Authors: many publications'};
 
-    xaxis_labels = {'Autor-Strategie', ...
-                    'Fachzeitschrift-Strategie', ...
-                    'Kombintation aller Strategien'};
+    xaxis_labels = {'Author strategy', ...
+                    'Journal strategy', ...
+                    'Combination of all strategies'};
     figure
         b = bar(effectiveness);
         b(1).LineWidth = 2;
         b(1).EdgeColor = 'red';
         grid on
         set(gca,'xticklabel', xaxis_labels)
-        ylabel('Effektivität')
+        ylabel('Effectiveness')
         legend(legend_labels, 'Location', 'northwest')
 
     figure
@@ -110,7 +110,7 @@ function evaluationClusterAuthors(evaluation_name, strategies)
         b(1).EdgeColor = 'red';
         grid on
         set(gca,'xticklabel', xaxis_labels)
-        ylabel('Effizienz')
+        ylabel('Efficiency')
         legend(legend_labels, 'Location', 'northeast')
 
     figure
@@ -119,7 +119,7 @@ function evaluationClusterAuthors(evaluation_name, strategies)
         b(1).EdgeColor = 'red';
         grid on
         set(gca,'xticklabel', xaxis_labels)
-        ylabel('Anzahl untersuchte Publikationen')
+        ylabel('Number of publications examined')
         legend(legend_labels, 'Location', 'northwest')
 
 end
