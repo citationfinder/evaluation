@@ -37,15 +37,15 @@ function evaluationStrategy(evaluation_name, strategies, do_plot, strategies_leg
             grid on
             legend(strategies_legend)
             %title('effectiveness')
-            xlabel('Messung')
-            ylabel('Effektivität')
+            xlabel('Measurement')
+            ylabel('Effectiveness')
             %axis([0,50,0,1])
         figure(2)
             grid on
             legend(strategies_legend)
             %title('efficiency')
-            xlabel('Messung')
-            ylabel('Effizienz')
+            xlabel('Measurement')
+            ylabel('Efficiency')
             %axis([0,50,0,0.18])
     end
 
