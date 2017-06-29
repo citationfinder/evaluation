@@ -33,7 +33,7 @@ function plotStrategiesForAuthor(evaluation_name, author_id, strategies, author_
             filename = char(fullfile(evaluation_dir, strategies{i}, strcat(author_id, '.csv')));
             if exist(filename, 'file')
                 %try
-                data = csvread(filename, 1);
+                data = csvread(filename);
                 plot(data(:,1), data(:,2), '.-')
                 %catch
                 %    plot(0, 0, '.-')

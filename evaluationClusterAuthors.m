@@ -96,27 +96,21 @@ function evaluationClusterAuthors(evaluation_name, strategies)
                     'Fachzeitschrift-Strategie', ...
                     'Kombintation aller Strategien'};
     figure
-        b = bar(effectiveness);
-        b(1).LineWidth = 2;
-        b(1).EdgeColor = 'red';
+        b = bar(effectiveness, 'linewidth', 2, 'edgecolor', 'red');
         grid on
         set(gca,'xticklabel', xaxis_labels)
         ylabel('Effektivität')
         legend(legend_labels, 'Location', 'northwest')
 
     figure
-        b = bar(efficiency);
-        b(1).LineWidth = 2;
-        b(1).EdgeColor = 'red';
+        b = bar(efficiency, 'linewidth', 2, 'edgecolor', 'red');
         grid on
         set(gca,'xticklabel', xaxis_labels)
         ylabel('Effizienz')
         legend(legend_labels, 'Location', 'northeast')
 
     figure
-        b = bar(inspected_publications);
-        b(1).LineWidth = 2;
-        b(1).EdgeColor = 'red';
+        b = bar(inspected_publications, 'linewidth', 2, 'edgecolor', 'red');
         grid on
         set(gca,'xticklabel', xaxis_labels)
         ylabel('Anzahl untersuchte Publikationen')
