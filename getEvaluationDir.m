@@ -10,7 +10,7 @@ function [ evaluation_dir ] = getEvaluationDir( evaluation_name )
 
     evaluation_dir = fullfile('evaluation_data', 'strategies', evaluation_name);
     if ~isdir(evaluation_dir)
-       error('Evaluation files does not exists')
+       error('Evaluation directory does not exists: %s', evaluation_dir)
     end
 
 end
