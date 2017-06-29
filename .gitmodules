@@ -1,0 +1,3 @@
+[submodule "evaluation_data"]
+	path = evaluation_data
+	url = https://github.com/citationfinder/evaluation_data.git
