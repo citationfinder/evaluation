@@ -31,9 +31,9 @@ function evaluationPlotAuthors(evaluation_name, strategies, strategies_legend, s
     fprintf('num_citations, mean=%f, min=%f, max=%f\n', mean(authors_num_citations), min(authors_num_citations), max(authors_num_citations))
 
     for i = 1:length(authors_ids)
-        %if exist('specific_author_ids', 'var') && ~any(specific_author_ids==str2double(authors_ids{i}))
-        %    continue
-        %end
+        if exist('specific_author_ids', 'var') && ~any(specific_author_ids==str2double(authors_ids{i}))
+            continue
+        end
         plotStrategiesForAuthor(evaluation_name, authors_ids{i}, strategies, authors_num_publications(i), authors_num_citations(i), strategies_legend);
     end
 end
