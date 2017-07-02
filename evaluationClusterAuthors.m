@@ -13,6 +13,8 @@ function evaluationClusterAuthors(evaluation_name, strategies)
         error('Not enough input arguments.')
     end
 
+    plot_linewidth = 0;
+    plot_edgecolor = 'black';
     evaluation_dir = getEvaluationDir(evaluation_name);
     
     % init
@@ -96,23 +98,23 @@ function evaluationClusterAuthors(evaluation_name, strategies)
                     'Journal strategy', ...
                     'Combination of all strategies'};
     figure
-        b = bar(effectiveness, 'linewidth', 2, 'edgecolor', 'red');
+        b = bar(effectiveness, 'linewidth', plot_linewidth, 'edgecolor', plot_edgecolor);
         grid on
-        set(gca,'xticklabel', xaxis_labels)
+        set(gca, 'xticklabel', xaxis_labels)
         ylabel('Effectiveness')
         legend(legend_labels, 'Location', 'northwest')
 
     figure
-        b = bar(efficiency, 'linewidth', 2, 'edgecolor', 'red');
+        b = bar(efficiency, 'linewidth', plot_linewidth, 'edgecolor', plot_edgecolor);
         grid on
-        set(gca,'xticklabel', xaxis_labels)
+        set(gca, 'xticklabel', xaxis_labels)
         ylabel('Efficiency')
         legend(legend_labels, 'Location', 'northeast')
 
     figure
-        b = bar(inspected_publications, 'linewidth', 2, 'edgecolor', 'red');
+        b = bar(inspected_publications, 'linewidth', plot_linewidth, 'edgecolor', plot_edgecolor);
         grid on
-        set(gca,'xticklabel', xaxis_labels)
+        set(gca, 'xticklabel', xaxis_labels)
         ylabel('Number of publications examined')
         legend(legend_labels, 'Location', 'northwest')
 

@@ -25,6 +25,8 @@ function plotStrategiesForAuthor(evaluation_name, author_id, strategies, author_
         strategies_legend = strategies;
     end
     
+    plot_linewidth = 2;
+    plot_markersize = 15;
     evaluation_dir = getEvaluationDir(evaluation_name);
     
     figure
@@ -34,7 +36,7 @@ function plotStrategiesForAuthor(evaluation_name, author_id, strategies, author_
             if exist(filename, 'file')
                 %try
                 data = csvread(filename);
-                plot(data(:,1), data(:,2), '.-')
+                plot(data(:,1), data(:,2), '.-', 'linewidth', plot_linewidth, 'markersize', plot_markersize)
                 %catch
                 %    plot(0, 0, '.-')
                 %end

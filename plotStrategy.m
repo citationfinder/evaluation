@@ -20,6 +20,9 @@ function [effectiveness_mean, efficiency_mean, inspected_publications_mean] = pl
     elseif nargin < 5
         do_plot = false;
     end
+ 
+    plot_linewidth = 2;
+    plot_markersize = 15;
 
     % remove zeros
     idx = find(author_num_citations==0);
@@ -43,12 +46,12 @@ function [effectiveness_mean, efficiency_mean, inspected_publications_mean] = pl
 
         figure(1)
             hold on
-            plot(x_axis, effectiveness)
+            plot(x_axis, effectiveness, 'linewidth', plot_linewidth, 'markersize', plot_markersize)
             %plot(get(gca,'xlim'), [effectiveness_mean effectiveness_mean])
             hold off
         figure(2)
             hold on
-            plot(x_axis, efficiency)
+            plot(x_axis, efficiency, 'linewidth', plot_linewidth, 'markersize', plot_markersize)
             %plot(get(gca,'xlim'), [efficiency_mean efficiency_mean])
             hold off
     end
